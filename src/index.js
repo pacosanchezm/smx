@@ -1,12 +1,13 @@
-import { StrictMode } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
-import App from "./App";
+import App from "../smx-store-meet/appi.jsx";
 
 const rootElement = document.getElementById("root");
+
 ReactDOM.render(
-  <StrictMode>
+  <React.StrictMode>
     <App />
-  </StrictMode>,
+  </React.StrictMode>,
   rootElement
 );

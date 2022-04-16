@@ -149,7 +149,7 @@ const ColorBoton = function(props) {
         return "#B7CE3F"
       } 
     }    
-  }
+  } else return "#e6e6e6"
 };
 
 const EnableBoton = function(props) {
@@ -215,109 +215,6 @@ const ModuloSimple  = () => {
   //console.log(props)
     return (
 
-      // <div>
-      //   < meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
-      //   <Grid >
-                    
-      //     <Flex sx={{ width: "500px" }}>
-      //       <Box sx={{ width: "100%" }}>
-      //         <Text sx={Estilo.msecc2}>{"Completa tus datos"}</Text>
-      //       </Box>
-      //     </Flex>
-        
-      //   </Grid>
-  
-      //   <Box sx={{ height: 13,  }} />
-      
-      //   <Flex sx={{ width: "100%", bg: "white", borderRadius: "10px", borderStyle: "solid", borderWidth:1, borderColor: "#9999",}} >
-      //     <Box
-      //       sx={{
-      //         fontWeight: "normal",
-      //         fontSize: 1,
-      //         color: "text",
-      //         fontFamily: "body",
-      //         width: "100%",
-      //         pt: 5,
-      //       }}
-      //     >
-    
-      //       <Grid >
-    
-      //         <Flex sx={{ width: "100%", alignItems: 'center', mb: 3 }}>
-      //           <Box sx={{ width: "20%"}}>
-      //             <Text sx={Estilo.label1} >Nombre</Text>
-      //           </Box>
-      //           <Box sx={{ width: "70%" }}>
-      //             <Input sx={Estilo.input1} {...useChangeArray(Detalle, "Nombre", setDetalle)}/>
-      //           </Box>
-      //         </Flex>
-    
-      //         <Flex sx={{ width: "100%", alignItems: 'center', mb: 3 }}>
-      //           <Box sx={{ width: "20%" }}>
-      //             <Text sx={Estilo.label1}>Apellidos</Text>
-      //           </Box>
-      //           <Box sx={{ width: "70%" }}>
-      //             <Input sx={Estilo.input1} {...useChangeArray(Detalle, "Apellido", setDetalle)} />
-      //           </Box>
-      //         </Flex>
-    
-      //         <Flex sx={{ width: "100%", alignItems: 'center', mb: 3 }}>
-      //           <Box sx={{ width: "20%" }}>
-      //             <Text sx={Estilo.label1}>Telefono</Text>
-      //           </Box>
-      //           <Box sx={{ width: "30%" }}>
-      //             <Input sx={Estilo.input1} {...useChangeArray(Detalle, "Telefono", setDetalle)} />
-      //           </Box>
-      //         </Flex>
-    
-      //         <Flex sx={{ width: "100%", alignItems: 'center', mb: 3 }}>
-      //           <Box sx={{ width: "20%" }}>
-      //             <Text sx={Estilo.label1}>Email</Text>
-      //           </Box>
-      //           <Box sx={{ width: "70%" }}>
-      //             <Input sx={Estilo.input1} {...useChangeArray(Detalle, "Email", setDetalle)} />
-      //           </Box>
-      //         </Flex>
-    
-      //         <Box css={{ height: 21 }} />
-    
-    
-      //         <Flex sx={{ width: "100%" }}>
-      //           <Box sx={{ width: "20%" }}/>
-                  
-    
-      //             <Box sx={{ width: "70%" }}>
-    
-      //                 <Button sx={{ width: "100%", height: "34px" }}
-      //                   width={1}
-      //                   bg={ColorBoton()}
-      //                   disabled={EnableBoton()}
-      //                   onClick={async () => {
-      //                     setLoadingSecc(true)
-      //                       await props.useAcciones.InfoAdd()
-      //                     setLoadingSecc(false)
-      //                   }}
-      //                 >
-      //                   <Text sx={Estilo.mbtn1}>
-      //                     Continuar
-      //                     {LoadingSecc ? <Spinner size={17} ml={0} /> : <div/>}
-      //                     </Text>
-    
-      //                 </Button>
-    
-      //             </Box>
-    
-      //         </Flex>
-      //           <Box css={{ height: 21 }} />
-    
-      //       </Grid>
-    
-    
-    
-      //     </Box>
-      //   </Flex>
-      // </div>
-
 
 
 
@@ -325,21 +222,9 @@ const ModuloSimple  = () => {
 
 
 <div>
-  <Row>
-    <Text sx={Estilo.msecc2}>{"Completa tus datos"}</Text>
-  </Row>
-
-
-
-
-
-
-
-
-
-
-
-
+<Row>
+  <Text sx={{...Estilo.msecc2, textAlign: "left"}}>{"Completa tus datos"}</Text>
+</Row>
 
 
 
@@ -347,7 +232,14 @@ const ModuloSimple  = () => {
 
 <Box sx={{ height: 13,  }} />
 
-<Flex sx={{ width: "100%", bg: "white", borderRadius: "10px", borderStyle: "none", borderWidth:1, borderColor: "#9999",}} >
+
+<Container fluid 
+  style={{ width: "100%", bg: "white", borderRadius: "10px", borderStyle: "solid", borderWidth:1, borderColor: "#9999", paddingTop: "10px"}}
+>
+
+
+
+{/* <Flex sx={{ width: "100%", bg: "white", borderRadius: "10px", borderStyle: "none", borderWidth:1, borderColor: "#9999",}} >
   <Box
     sx={{
       fontWeight: "normal",
@@ -357,7 +249,7 @@ const ModuloSimple  = () => {
       width: "100%",
       pt: 5,
     }}
-  >
+  > */}
 
     <Grid >
 
@@ -419,42 +311,57 @@ const ModuloSimple  = () => {
         </Row>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <Box css={{ height: 21 }} />
 
     </Grid>
 
+    </Container> 
 
 
 
+
+    <Box sx={{ height: 13,  }} />
+
+<Row>
+  <Text sx={{...Estilo.msecc2, textAlign: "left"}}>{"Datos del emprendimiento"}</Text>
+</Row>
+
+
+
+<Container fluid 
+  style={{ width: "100%", bg: "white", borderRadius: "10px", borderStyle: "solid", borderWidth:1, borderColor: "#9999", paddingTop: "10px"}}
+>
+
+  <Row style={{marginBottom: "10px"}}>
+    <Col xs={3}> <Text sx={Estilo.label1} >Nombre</Text> </Col>
+    <Col xs={9}> <Input sx={Estilo.input1} {...useChangeArray(Detalle, "Titulo", setDetalle)}/> </Col>
+  </Row>
+
+  <Row style={{marginBottom: "10px"}}>
+    <Col xs={3}> <Text sx={Estilo.label1} >Sitio Web</Text> </Col>
+    <Col xs={9}> <Input sx={Estilo.input1} {...useChangeArray(Detalle, "Web", setDetalle)}/> </Col>
+  </Row>
+
+
+  <Row style={{marginBottom: "10px"}}>
+    <Col xs={3}> <Text sx={Estilo.label1} >Empleados</Text> </Col>
+    <Col xs={9}> 
+      <Dropbox
+        name="Categoria"
+        isSearchable={false}
+        styles={DropboxFiltro1}
+        value={{value: Detalle.Empleados, label: Detalle.Empleados}}
+        options={props.useContext.Empleados[0]}
+        onChange={async e => { setDetalle({ ...Detalle, "Empleados": e.value }) }} 
+      />
+    </Col>
+  </Row>
+
+
+</Container> 
+
+
+<Box sx={{ height: 13,  }} />
 
 
 
@@ -608,54 +515,6 @@ const ModuloSimple  = () => {
 
 
 
-
-
-
-
-
-
-
-
-      <Flex sx={{ width: "100%" }}>
-        <Box sx={{ width: "20%" }}/>
-          
-
-          <Box sx={{ width: "70%" }}>
-
-              <Button sx={{ width: "100%", height: "34px" }}
-                width={1}
-                bg={ColorBoton()}
-                disabled={EnableBoton()}
-                onClick={async () => {
-                  setLoadingSecc(true)
-                    await props.useAcciones.InfoAdd()
-                  setLoadingSecc(false)
-                }}
-              >
-                <Text sx={Estilo.mbtn1}>
-                  Continuar
-                  {LoadingSecc ? <Spinner size={17} ml={0} /> : <div/>}
-                  </Text>
-
-              </Button>
-
-          </Box>
-
-      </Flex>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <Container fluid 
       >
         <Row style={{marginBottom: "10px"}}>
@@ -678,6 +537,8 @@ const ModuloSimple  = () => {
               </Text>
 
             </Button>
+
+            
           </Col>
 
         </Row>
@@ -685,15 +546,15 @@ const ModuloSimple  = () => {
       </Container>
 
       <Box css={{ height: 34 }} />
-  </Box>
+  {/* </Box>
 
 
 
 
 
 
-</Flex> 
-</div>
+</Flex> */}
+</div> 
 
 
 

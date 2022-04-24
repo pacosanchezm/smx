@@ -292,7 +292,44 @@ const ModuloSimple  = () => {
       <Box css={{ height: 21 }} />
 
 
+      <Row style={{marginBottom: "10px"}}>
+        <Col xs={3}> <Text sx={Estilo.label1} >Nacimiento</Text> </Col>
+          <Col xs={3}> 
+            <Dropbox
+              name="Dia"
+              isSearchable={false}
+              styles={DropboxFiltro1}
+              value={{value: Detalle.NacimientoDia, label: Detalle.NacimientoDia}}
+              options={props.useContext.FechaDia[0]}
+              onChange={async e => { setDetalle({ ...Detalle, "NacimientoDia": e.value }) }} 
+            />
+          </Col>
 
+          <Col xs={3}> 
+            <Dropbox
+              name="Mes"
+              isSearchable={false}
+              styles={DropboxFiltro1}
+              value={{value: Detalle.NacimientoMes, label: Detalle.NacimientoMes}}
+              options={props.useContext.FechaMes[0]}
+              onChange={async e => { setDetalle({ ...Detalle, "NacimientoMes": e.value }) }} 
+            />
+          </Col>
+
+          <Col xs={3}> 
+            <Dropbox
+              name="Ano"
+              isSearchable={false}
+              styles={DropboxFiltro1}
+              value={{value: Detalle.NacimientoAno, label: Detalle.NacimientoAno}}
+              options={props.useContext.FechaAno[0]}
+              onChange={async e => { setDetalle({ ...Detalle, "NacimientoAno": e.value }) }} 
+            />
+          </Col>
+
+
+
+      </Row>
 
 
 
@@ -323,7 +360,10 @@ const ModuloSimple  = () => {
     <Box sx={{ height: 13,  }} />
 
 <Row>
-  <Text sx={{...Estilo.msecc2, textAlign: "left"}}>{"Datos del emprendimiento"}</Text>
+  <Col xs={9} style={{textAlign: "left"}}>
+    <Text sx={{...Estilo.msecc2, textAlign: "left"}}>{"Datos del emprendimiento"}</Text> <Text sx={Estilo.d2s} >(opcional)</Text>
+  </Col>
+
 </Row>
 
 

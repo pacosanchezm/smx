@@ -70,24 +70,31 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
   let MiDetalle = {
+    Empresa: 4,
     Id: ["0"],
     Codigo: [""],
     Fecha: [""],
     Ciudad: "",
   
   
-    // Nombre: "Paco",
-    // Apellido: "Sanchez M",
-    // Telefono: "4772740011",
-    // Email: "paco_sanchezm@hotmail.com",
+    Nombre: "Javieros",
+    Apellido: "Sanchez M",
+    Telefono: "4772740030",
+    Email: "paco_sanchezm30@hotmail.com",
   
   
   
-    Nombre: "",
-    Apellido: "",
-    Telefono: "",
-    Email: "",
-  
+    // Nombre: "",
+    // Apellido: "",
+    // Telefono: "",
+    // Email: "",
+
+
+
+    NacimientoDia: "",
+    NacimientoMes: "",
+    NacimientoAno: "",
+
   
   
   
@@ -371,6 +378,11 @@ const useStateUniv = () => {
     CatalogoProducto: useState(useContext(createContext({}))),
 
     Detalle: useState(useContext(createContext(MiDetalle))),
+
+    FechaDia: useState(useContext(createContext(FechaDia))),
+    FechaMes: useState(useContext(createContext(FechaMes))),
+    FechaAno: useState(useContext(createContext(FechaAno))),
+
 
     Estados: useState(useContext(createContext(Estados))),
     Empleados: useState(useContext(createContext(Empleados))),
@@ -850,6 +862,17 @@ let useAcciones = function(StateContext) {
         console.log({MiCliente: MiCliente})
         await setDetalle({ ...Detalle, "Cliente": MiCliente.Id })
 
+        
+        let MiClienteProf = await useData.ClientesProf().add(Detalle, MiCliente.Id) 
+        console.log({MiClienteProf: MiClienteProf})
+
+
+
+
+
+
+
+
         // el manual
           let MiPedido = 6053
           let MiConsumo = 7937
@@ -868,6 +891,16 @@ let useAcciones = function(StateContext) {
           //  setPedido(MiPedido)
           // let MiConsumo = await this.ConsumoAdd(MiPedido)
           //   setRegistros([{Id: MiConsumo}])
+
+
+
+
+        // pagar free
+
+           let MiPago = await this.PagarFree(MiPedido)
+
+
+
 
 
         return 1
@@ -917,21 +950,11 @@ let useAcciones = function(StateContext) {
 
 
 
-
-
-
-
-
      getCupon : async function (e) {
-
-
 
       try{
         let MiCupon = await useData.Cupones().get(e);
         return MiCupon
-
-
-
 
 
       } catch (e) {console.error(e)
@@ -993,7 +1016,7 @@ let useAcciones = function(StateContext) {
 
       let MiMonto = await useData.Pedidos().upMonto(
         {
-          Id: Pedido,
+          Id: e,
           Monto: Precio,
           Obv: null,
         }
@@ -1003,7 +1026,7 @@ let useAcciones = function(StateContext) {
       let MiPago = await useData.Pagos().Free({
 
          sucursal: PedidoSucursal,
-         pedido: Pedido,
+         pedido: e,
          monto: Precio,
          servicio: 0,
          obv: null,
@@ -1013,7 +1036,7 @@ let useAcciones = function(StateContext) {
 
       if(MiPago===1){
         setPagado(CatalogoProducto[0].Precio)
-        this.Inscribir()    // activar para inscribir en zoom
+       // this.Inscribir()    // activar para inscribir en zoom
       }
       return MiPago
     },

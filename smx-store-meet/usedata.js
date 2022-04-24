@@ -151,6 +151,7 @@ let usedata = function(StateContextM) {
                `,
               variables: {
                 Query: {
+                  Empresa: e.Empresa,
                   Telefono: e.Telefono,
                   Nombre: String(e.Nombre),
                   ApellidoPat: String(e.Apellido),
@@ -198,6 +199,58 @@ let usedata = function(StateContextM) {
 
       }
     }, //cliente
+
+
+
+    ClientesProf: function() {
+      return {
+        add: async function(e, Cliente) {
+            
+          var axdata = await axios({
+            url: graphqlserver,
+            method: "post",
+            data: {
+              query: `
+                mutation Insert($Query: ClienteProfInput) {
+                  ClientesM {
+                    Profs {
+                      Insert(Query: $Query)
+                    }
+                  }
+                }
+              `,
+              variables: {
+                Query: {
+                  "Cliente": Cliente,
+                  "Titulo": e.Titulo,
+                  "Web": e.Web,
+                  "Categoria": e.Categoria,
+                  "Descripcion": e.Descripcion,
+                  "Empleados": e.Empleados,
+                  "Estado": e.Estado,
+                  "Referencia1": String(e.Referencia1),
+                  "Referencia2": String(e.Referencia2),
+                  "Referencia3": String(e.Referencia3),
+                  // "Obv": e.Obv,
+
+                }
+              }
+            }
+          });
+
+          let axdataRes = axdata.data.data.ClientesM.Profs.Insert
+          if (axdataRes) { return axdataRes } else return 0
+        },
+
+      }
+    }, // ClientesProf
+
+
+
+
+
+
+
 
 
 

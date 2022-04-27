@@ -2,7 +2,7 @@ import axios from "axios"
 
 // ------------------------------------------------------------
 
-let graphqlserver = "https://8t8jt.sse.codesandbox.io/gql"
+let graphqlserver = "https://djkx1w.sse.codesandbox.io/gql"
 // let graphqlserver = "https://smxai.net/graphqleai2"
 let graphqlserverb = "https://smxblogs.com/aprendeacomer/graphql"
 

@@ -117,7 +117,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
   let MisProductos = {
     "Id": 1,
-    "Producto": 785,
+    "Producto": 819,
     "ProductosTitulo": "¿Comprar una franquicia o emprender desde cero?",
     "Precio": 200,
     "Obv": "",
@@ -724,7 +724,7 @@ let useAcciones = function(StateContext) {
 
       setLoadingDataMain(true)
 
-      let useCatalogoProducto = await useData.Catalogos().get({id:"desdecero"}) //todo hilar con request
+      let useCatalogoProducto = await useData.Catalogos().get({id:"desdecerov"}) //todo hilar con request
       console.log(useCatalogoProducto)
       setCatalogoProducto(useCatalogoProducto)
       setPrecio(useCatalogoProducto[0].Precio)
@@ -874,30 +874,30 @@ let useAcciones = function(StateContext) {
 
 
         // el manual
-          let MiPedido = 6053
-          let MiConsumo = 7937
+         // let MiPedido = 6053
+         // let MiConsumo = 7937
 
         // para correo
           //  let MiPedido = 6680
           //  let MiConsumo = 9320
 
 
-           setPedido(MiPedido)
-           setRegistros([{Id: MiConsumo}])
+         //  setPedido(MiPedido)
+        // setRegistros([{Id: MiConsumo}])
 
 
         // el bueno
-          // let MiPedido = await this.PedidoAdd(MiCliente.Id, Referido)
-          //  setPedido(MiPedido)
-          // let MiConsumo = await this.ConsumoAdd(MiPedido)
-          //   setRegistros([{Id: MiConsumo}])
+          let MiPedido = await this.PedidoAdd(MiCliente.Id, Referido)
+           setPedido(MiPedido)
+          let MiConsumo = await this.ConsumoAdd(MiPedido)
+            setRegistros([{Id: MiConsumo}])
 
 
 
 
         // pagar free
 
-           let MiPago = await this.PagarFree(MiPedido)
+           let MiPago = await this.PagarFree(MiPedido, MiConsumo)
 
 
 
@@ -1012,7 +1012,7 @@ let useAcciones = function(StateContext) {
 
 
 
-     PagarFree : async function (e) {
+     PagarFree : async function (e, MiConsumo) {
 
       let MiMonto = await useData.Pedidos().upMonto(
         {
@@ -1036,7 +1036,9 @@ let useAcciones = function(StateContext) {
 
       if(MiPago===1){
         setPagado(CatalogoProducto[0].Precio)
-       // this.Inscribir()    // activar para inscribir en zoom
+      // this.Inscribir()    // activar para inscribir en zoom
+      this.InscribirVideo(e, MiConsumo)    // activar para agregar video
+
       }
       return MiPago
     },
@@ -1240,6 +1242,82 @@ let useAcciones = function(StateContext) {
         return 0
       }
     },
+
+
+
+
+    InscribirVideo : async function (MiPedido, MiConsumo) {
+      let MiInscribir
+      //console.log("ClienteP: " + MiCliente)
+      try{
+        //setLoadingSecc5(true)
+
+
+        // El bueno 
+           MiInscribir = await useData.ConsumosMeetings().inscribirVideo({
+            Consumo: MiConsumo,
+            Host: String(CatalogoProducto[0].MeetingsHost),
+            MeetingId: String(CatalogoProducto[0].MeetingId),
+            // Email: String(Detalle.Email),
+            // Nombre: String(Detalle.Nombre),
+            // ApellidoPat: String(Detalle.Apellido),
+            // Telefono: String(Detalle.Telefono),
+            // Cupon: 0,
+          }) 
+
+
+        // Test
+         // MiInscribir = 1
+
+        // console.log({MiInscribir})
+
+        if(MiInscribir===1){
+         let getMeetings = await useData.ConsumosMeetings().get({Pedido: MiPedido})
+         setMeetings(getMeetings)
+         console.log({getMeetings})
+
+          if (getMeetings[0].ConsumosMeetingsIngresoUrl!=null) {
+           // let mailenvia = await useData.ConsumosMeetings().MandarMailNode(getMeetings, Detalle, Productos)
+           // console.log({mailenvia})
+
+           // setLoadingSecc5(false)
+           setInscrito(true)
+           
+           
+           return 1
+          } else { }
+        }
+
+        //setLoadingSecc5(false)
+        
+        return 0
+
+      } catch (e) {
+        console.error(e)
+        return 0
+      }
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2,8 +2,8 @@ import axios from "axios"
 
 // ------------------------------------------------------------
 
- // let graphqlserver = "https://8t8jt.sse.codesandbox.io/gql"
- let graphqlserver = "https://smxai.net/graphqleai2"
+let graphqlserver = "https://djkx1w.sse.codesandbox.io/gql"
+ // let graphqlserver = "https://smxai.net/graphqleai2"
 
 
 //let graphqlserverb = "https://smxblogs.com/aprendeacomer/graphql"
@@ -1207,6 +1207,41 @@ let usedata = function(StateContextM) {
 
 
 
+            inscribirVideo : async function(q) {
+              var axdata = await axios({
+                url: graphqlserver,
+                method: "post",
+                data: {
+                  query: `
+                    mutation InscribirVideo ($Query: InscribirMeetingInput ) {
+                      ConsumosMeetingsM {
+                        Registro {
+                          InscribirVideo (Query: $Query)
+                        }
+                      }
+                    } 
+                  `,
+                  variables: {
+                    Query: {
+                      Consumo: q.Consumo,
+                      Host: q.Host,
+                      MeetingId: q.MeetingId,
+                      // Email: String(q.Email.replace(/\s+/g, '')),
+                      // Nombre: q.Nombre,
+                      // ApellidoPat: q.ApellidoPat,
+                      // Telefono: q.Telefono,
+                      // Cupon: q.Cupon,
+                    }
+                  }
+                }
+              });
+          
+              let axdataRes = axdata.data.data.ConsumosMeetingsM.Registro.InscribirVideo;
+          
+              if (axdataRes) {return 1} else {return 0}
+            },
+    
+    
 
 
             

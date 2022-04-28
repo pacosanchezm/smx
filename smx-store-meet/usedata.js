@@ -156,6 +156,8 @@ let usedata = function(StateContextM) {
                   Nombre: String(e.Nombre),
                   ApellidoPat: String(e.Apellido),
                   Email: String(e.Email.replace(/\s+/g, '')),
+                  Obv: String(e.NacimientoDia + " / " + e.NacimientoMes + " / " + e.NacimientoAno)
+
                 }
               }
             }

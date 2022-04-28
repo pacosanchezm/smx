@@ -77,17 +77,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
     Ciudad: "",
   
   
-    Nombre: "Javieros",
-    Apellido: "Sanchez M",
-    Telefono: "4772740030",
-    Email: "paco_sanchezm30@hotmail.com",
+    // Nombre: "Javieros",
+    // Apellido: "Sanchez M",
+    // Telefono: "4772740030",
+    // Email: "paco_sanchezm30@hotmail.com",
   
   
   
-    // Nombre: "",
-    // Apellido: "",
-    // Telefono: "",
-    // Email: "",
+    Nombre: "",
+    Apellido: "",
+    Telefono: "",
+    Email: "",
 
 
 
@@ -103,6 +103,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
   
     Sucursal: [""],
     Cliente: null,
+    Pass: false,
     Cuenta: [""],
     Monto: [""],
     Obv: [""],
@@ -803,9 +804,11 @@ let useAcciones = function(StateContext) {
        await setUserId(axapi.data._id)
        await setUserName(axapi.data.username)
 
+       return 1
       } else {
          setStatus("Usuario o pass incorrectos")
-      }
+        return 0
+        }
 
     },
 
@@ -861,6 +864,13 @@ let useAcciones = function(StateContext) {
         let MiCliente = await useData.Clientes().pull4(Detalle) 
         console.log({MiCliente: MiCliente})
         await setDetalle({ ...Detalle, "Cliente": MiCliente.Id })
+
+
+        if (MiCliente.Pass) {
+          await setDetalle({ ...Detalle, "Pass": true })
+        }
+
+
 
         
         let MiClienteProf = await useData.ClientesProf().add(Detalle, MiCliente.Id) 
@@ -1377,17 +1387,29 @@ let useAcciones = function(StateContext) {
         
         }
 
-
-
-
-
-
        return MiPass
  
      },
 
 
 
+     LoggerPass : async function (e) {
+
+        let MiPass = await this.Logger2(e)
+
+
+
+       if (MiPass === 1) {
+        await setRegistrado(true)
+       // Loguear          
+         // await setLoginName(String(e.Tel))
+         // await setLoginPass(String(e.Pass))
+         
+       }
+
+      return MiPass
+
+    },
 
 
 

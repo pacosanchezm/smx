@@ -112,36 +112,71 @@ const ModuloSimple  = () => {
   // console.log({Images})
    return (
      <div>
-       <Flex sx={{ width: "100%" }}>
-         <Box
-           //bg="primary"
-           sx={{
-             fontWeight: "normal",
-             fontSize: 1,
-             color: "text",
-             fontFamily: "body",
-             width: "100%"
-           }}
-         >
- 
 
-          <Flex sx={{ width: "100%" }}>
-            <Box sx={{ width: "100%" }}>
-              <Text sx={Estilo.h4s}>{Detalle.Nombre + " " + Detalle.Apellido}</Text>
-            </Box>
-          </Flex>
+      <Box css={{ height: 34 }} />
 
-          <Flex sx={{ width: "100%" }}>
-            <Box sx={{ width: "100%" }}>
-              <Text sx={Estilo.d1}>{Detalle.Email}</Text>
-            </Box>
-          </Flex>
-
-          <Box css={{ height: 21 }} />
+      <Text sx={Estilo.msecc2v}>{"Para ingresar al evento:"}</Text>
 
 
-         </Box>
-       </Flex>
+      <Box css={{ height: 21 }} />
+
+      <Text sx={Estilo.cardl1}>{"Ingresa tu contraseña de acceso a la plataforma para asistir a la conferencia"}</Text>
+
+      <Box css={{ height: 21 }} />
+
+      <Flex sx={{ width: "100%", alignItems: 'left', mb: 3 }}>
+        <Box sx={{ width: "30%" }}>
+          <Text sx={Estilo.label1}>Contraseña:</Text>
+        </Box>
+        <Box sx={{ width: "30%" }}>
+          <Input sx={Estilo.input1} {...useChange(Pass1, setPass1)} type="password" autocomplete="off"/>
+        </Box>
+      </Flex>
+  
+            <Box css={{ height: 13 }} />
+
+            <Flex sx={{ width: "100%" }}>
+              <Box sx={{ width: "30%" }}/>
+                  
+                <Box sx={{ width: "30%" }}>
+  
+                    <Button sx={{ width: "100%", height: "34px" }}
+                      width={1}
+                      bg={ColorBoton()}
+                      disabled={EnableBoton()}
+                      onClick={async () => {
+                        setLoadingSecc(true)
+                          await props.useAcciones.LoggerPass({
+                            Id: Detalle.Cliente,
+                            Pass: Pass1,
+                            Tel: Detalle.Telefono
+                          })
+
+
+
+                        setLoadingSecc(false)
+                      }}
+                    >
+                       <Text sx={Estilo.mbtn1}>
+                         Crear
+                        {LoadingSecc ? <Spinner size={17} ml={3} /> : <div/>}
+                        </Text>
+  
+                    </Button>
+  
+                </Box>
+  
+            </Flex>
+
+
+
+
+
+
+
+
+
+
      </div>
    )
  }
@@ -158,31 +193,16 @@ const ModuloSimple  = () => {
 
         <Box css={{ height: 34 }} />
 
-
         <Text sx={Estilo.msecc2v}>{"Para ingresar al evento:"}</Text>
-
   
   
         <Box css={{ height: 21 }} />
   
                 <Text sx={Estilo.cardl1}>{"Crea tu contraseña de acceso a la plataforma para asistir a la conferencia"}</Text>
-
-  
       
         <Box css={{ height: 21 }} />
 
 
-
-
-
-
-
-
-
-
-  
-
-  
 
   
             <Flex sx={{ width: "100%", alignItems: 'left', mb: 3 }}>

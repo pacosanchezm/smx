@@ -267,25 +267,7 @@ const Modulo1  = () => {
               
         <Flex >
           <Box sx={{ width: "100%" }}>
-            <Text sx={Estilo.cardl1}>{"En unos momentos recibirás un correo con tu link para accesar ( vía zoom ) al evento. Recuerda revisar tu bandeja de correos no deseados o spam, puede haber llegado ahí."}</Text>
-          </Box>
-        </Flex>
-    
-      </Grid>
-    
-    
-      <Box  css={{ height: 21 }} />
-
-
-
-
-
-
-      <Grid >
-              
-        <Flex >
-          <Box sx={{ width: "100%" }}>
-            <Text sx={Estilo.cardl1}>{"Si lo prefieres, en la fecha y hora del evento, ingresa a la plataforma con tu número de teléfono y contraseña en la opción Mi Cuenta - Iniciar sesión. Despues ve a la sección Mi Cuenta - Mis eventos - para asistir al evento."}</Text>
+            <Text sx={Estilo.cardl1}>{"Ingresa a la plataforma con tu número de teléfono y contraseña en la opción Mi Cuenta - Iniciar sesión. Despues ve a la sección Mi Cuenta - Mis eventos - para acceder al evento."}</Text>
           </Box>
         </Flex>
     
@@ -300,7 +282,7 @@ const Modulo1  = () => {
               
         <Flex >
           <Box sx={{ width: "100%" }}>
-            <Text sx={Estilo.md1c}>{"Recuerda que únicamente es un acceso por persona, si compartes tu cuenta o tu link con alguien más, no podrás ingresar al evento."}</Text>
+            <Text sx={Estilo.md1c}>{"Recuerda que únicamente es un acceso por persona, si compartes tu link con alguien más, no podrá ingresar al evento."}</Text>
           </Box>
         </Flex>
     

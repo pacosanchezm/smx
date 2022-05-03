@@ -6,11 +6,21 @@ import React, { useState, useEffect, useContext, createContext, Suspense } from 
  // /** @jsx jsx */ 
   import { ThemeProvider, jsx, Styled, useThemeUI } from "theme-ui"
   import { Grid, Flex, Box, Button, Text, Image, Spinner, Input } from "@theme-ui/components"
-  import "@babel/polyfill"
+  //import "@babel/polyfill"
+
+
+  import Container from 'react-bootstrap/Container'
+  import Row from 'react-bootstrap/Row'
+  import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
+
+
 
   // ------------------
   //import usedata from "./usedata"
-  import Sponsor from "./sponsor"
+  import Share from "./share"
 
 let App;
 const StateContext = createContext();
@@ -91,12 +101,11 @@ const Body = props => {
 
     return (
 
-        <Sponsor {...props}
+        <Share {...props}
           useContextLocal={useContext(StateContext)}
           useAccionesLocal = {useaccioneslocal}
           useStatusLocal = {usestatuslocal}
         /> 
-
 
     )
 
@@ -111,6 +120,7 @@ const Body = props => {
 
 export default (App = props => {
 
+
   return (
     <ContextProvider Theme={props.Theme}>
       <main >
@@ -121,4 +131,3 @@ export default (App = props => {
 });
 
 // ----------------------------------------------------------------------------
-

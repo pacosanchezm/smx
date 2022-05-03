@@ -6,15 +6,11 @@ import React, { useState, useEffect, useContext, createContext, Suspense } from 
  // /** @jsx jsx */ 
   import { ThemeProvider, jsx, Styled, useThemeUI } from "theme-ui"
   import { Grid, Flex, Box, Button, Text, Image, Spinner, Input } from "@theme-ui/components"
-  import "@babel/polyfill"
-
-
+  //import "@babel/polyfill"
 
   // ------------------
   import usedata from "./usedata"
-
-  import Form from "./form"
-
+  import Cupon from "./cupon"
 
 let App;
 const StateContext = createContext();
@@ -27,6 +23,8 @@ const useStateUniv = (props) => {
       DataMain: useState(useContext(createContext(false))),
       Registros: useState(useContext(createContext(false))),
     },
+
+    Cupon: useState(useContext(createContext(""))),
 
   };
 }
@@ -43,25 +41,17 @@ const ContextProvider = ( props ) => {
 
 // --------------------------------------------------------------------------
 
-
 let useStatusLocal = function(StateContextM) {
-
   return {
-
-    cover: function() { return 1 },
-
+    main: function() { return 1 },
   }
 }
 
 // --------------------------------------------------------------------------
 
-
 let useAccionesLocal = function(StateContext) {
   const useDataLocal = new usedata()
   const [LoadingDataMain, setLoadingDataMain] = useContext(StateContext).Loading.DataMain
-
-
-
 
   // ---------------------
   
@@ -75,18 +65,12 @@ let useAccionesLocal = function(StateContext) {
       // let useDataRes = await useDataLocal.Page().get({ClaveWp:props.clave})
       // setRegistro(useDataRes)
 
-
       setLoadingDataMain(false)
-
     },
-    
-
   }
 }
 
 // -----------------------------------------------------------------------------
-
-
 
 
 // -----------------------------------------------------------------------------
@@ -110,19 +94,14 @@ const Body = props => {
 
     return (
 
-
-        <Form {...props}
-        
+        <Cupon {...props}
           useContextLocal={useContext(StateContext)}
           useAccionesLocal = {useaccioneslocal}
           useStatusLocal = {usestatuslocal}
         /> 
 
-
     )
-
   } catch (e) { console.error(e);}
-
 }
 
 // -----------------------------------------------------------------------------
@@ -142,8 +121,8 @@ export default (App = props => {
         <Body {...props} />
       </main>
     </ContextProvider>
-
   );
 });
 
 // ----------------------------------------------------------------------------
+

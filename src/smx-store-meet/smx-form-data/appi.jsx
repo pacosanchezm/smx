@@ -6,15 +6,14 @@ import React, { useState, useEffect, useContext, createContext, Suspense } from 
  // /** @jsx jsx */ 
   import { ThemeProvider, jsx, Styled, useThemeUI } from "theme-ui"
   import { Grid, Flex, Box, Button, Text, Image, Spinner, Input } from "@theme-ui/components"
-  import "@babel/polyfill"
-
+  //import "@babel/polyfill"
 
 
 
   // ------------------
   import usedata from "./usedata"
 
-  import Pay from "./pay"
+  import Form from "./form"
 
 
 let App;
@@ -28,11 +27,6 @@ const useStateUniv = (props) => {
       DataMain: useState(useContext(createContext(false))),
       Registros: useState(useContext(createContext(false))),
     },
-
-
-    Cupon: useState(useContext(createContext(""))),
-
-
 
   };
 }
@@ -116,11 +110,14 @@ const Body = props => {
 
     return (
 
-      <Pay {...props}
-        useContextLocal={useContext(StateContext)}
-        useAccionesLocal = {useaccioneslocal}
-        useStatusLocal = {usestatuslocal}
-      /> 
+
+        <Form {...props}
+        
+          useContextLocal={useContext(StateContext)}
+          useAccionesLocal = {useaccioneslocal}
+          useStatusLocal = {usestatuslocal}
+        /> 
+
 
     )
 
@@ -145,6 +142,7 @@ export default (App = props => {
         <Body {...props} />
       </main>
     </ContextProvider>
+
   );
 });
 

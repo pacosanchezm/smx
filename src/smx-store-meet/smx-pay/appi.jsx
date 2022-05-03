@@ -6,21 +6,16 @@ import React, { useState, useEffect, useContext, createContext, Suspense } from 
  // /** @jsx jsx */ 
   import { ThemeProvider, jsx, Styled, useThemeUI } from "theme-ui"
   import { Grid, Flex, Box, Button, Text, Image, Spinner, Input } from "@theme-ui/components"
-  import "@babel/polyfill"
-
-
-  import Container from 'react-bootstrap/Container'
-  import Row from 'react-bootstrap/Row'
-  import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+  //import "@babel/polyfill"
 
 
 
 
   // ------------------
-  //import usedata from "./usedata"
-  import Share from "./share"
+  import usedata from "./usedata"
+
+  import Pay from "./pay"
+
 
 let App;
 const StateContext = createContext();
@@ -33,6 +28,10 @@ const useStateUniv = (props) => {
       DataMain: useState(useContext(createContext(false))),
       Registros: useState(useContext(createContext(false))),
     },
+
+
+    Cupon: useState(useContext(createContext(""))),
+
 
 
   };
@@ -50,17 +49,25 @@ const ContextProvider = ( props ) => {
 
 // --------------------------------------------------------------------------
 
+
 let useStatusLocal = function(StateContextM) {
+
   return {
-    main: function() { return 1 },
+
+    cover: function() { return 1 },
+
   }
 }
 
 // --------------------------------------------------------------------------
 
+
 let useAccionesLocal = function(StateContext) {
- // const useDataLocal = new usedata()
+  const useDataLocal = new usedata()
   const [LoadingDataMain, setLoadingDataMain] = useContext(StateContext).Loading.DataMain
+
+
+
 
   // ---------------------
   
@@ -74,12 +81,18 @@ let useAccionesLocal = function(StateContext) {
       // let useDataRes = await useDataLocal.Page().get({ClaveWp:props.clave})
       // setRegistro(useDataRes)
 
+
       setLoadingDataMain(false)
+
     },
+    
+
   }
 }
 
 // -----------------------------------------------------------------------------
+
+
 
 
 // -----------------------------------------------------------------------------
@@ -95,24 +108,29 @@ const Body = props => {
     }, [])
 
 
+
     // ------------
+
 
   try {
 
     return (
 
-        <Share {...props}
-          useContextLocal={useContext(StateContext)}
-          useAccionesLocal = {useaccioneslocal}
-          useStatusLocal = {usestatuslocal}
-        /> 
+      <Pay {...props}
+        useContextLocal={useContext(StateContext)}
+        useAccionesLocal = {useaccioneslocal}
+        useStatusLocal = {usestatuslocal}
+      /> 
 
     )
 
-  } catch (e) { console.error(e)}
+  } catch (e) { console.error(e);}
+
 }
 
 // -----------------------------------------------------------------------------
+
+
 
 
 // -----------------------------------------------------------------------------

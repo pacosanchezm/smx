@@ -22,7 +22,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
   import { Grid, Flex, Box, Button, Text, Image, Spinner, Input, Link } from "@theme-ui/components"
 
   import Theme from "./theme"
-  import "@babel/polyfill"
+  //import "@babel/polyfill"
 
   import Container from 'react-bootstrap/Container'
   import Row from 'react-bootstrap/Row'

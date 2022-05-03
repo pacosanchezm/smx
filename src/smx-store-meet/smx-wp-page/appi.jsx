@@ -14,7 +14,7 @@ import React, { useState, useEffect, useContext, createContext, Suspense } from 
  // /** @jsx jsx */ 
   import { ThemeProvider, jsx, Styled, useThemeUI } from "theme-ui"
   import { Grid, Flex, Box, Button, Text, Image, Spinner, Input, Link } from "@theme-ui/components"
-  import "@babel/polyfill"
+  //import "@babel/polyfill"
 
 import Container from 'react-bootstrap/Container'
 

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
 
+/** @jsxRuntime classic */
+
 /** @jsx jsx */
 import { ThemeProvider, jsx, Styled, useThemeUI } from "theme-ui";
 import { Flex, Box, Button, Text, Image, Spinner, Grid, Input, Link } from "@theme-ui/components"

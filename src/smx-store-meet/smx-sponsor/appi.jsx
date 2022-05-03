@@ -6,11 +6,11 @@ import React, { useState, useEffect, useContext, createContext, Suspense } from 
  // /** @jsx jsx */ 
   import { ThemeProvider, jsx, Styled, useThemeUI } from "theme-ui"
   import { Grid, Flex, Box, Button, Text, Image, Spinner, Input } from "@theme-ui/components"
-  import "@babel/polyfill"
+  //import "@babel/polyfill"
 
   // ------------------
-  import usedata from "./usedata"
-  import Cupon from "./cupon"
+  //import usedata from "./usedata"
+  import Sponsor from "./sponsor"
 
 let App;
 const StateContext = createContext();
@@ -24,7 +24,6 @@ const useStateUniv = (props) => {
       Registros: useState(useContext(createContext(false))),
     },
 
-    Cupon: useState(useContext(createContext(""))),
 
   };
 }
@@ -50,7 +49,7 @@ let useStatusLocal = function(StateContextM) {
 // --------------------------------------------------------------------------
 
 let useAccionesLocal = function(StateContext) {
-  const useDataLocal = new usedata()
+ // const useDataLocal = new usedata()
   const [LoadingDataMain, setLoadingDataMain] = useContext(StateContext).Loading.DataMain
 
   // ---------------------
@@ -86,34 +85,31 @@ const Body = props => {
     }, [])
 
 
-
     // ------------
-
 
   try {
 
     return (
 
-        <Cupon {...props}
+        <Sponsor {...props}
           useContextLocal={useContext(StateContext)}
           useAccionesLocal = {useaccioneslocal}
           useStatusLocal = {usestatuslocal}
         /> 
 
+
     )
-  } catch (e) { console.error(e);}
+
+  } catch (e) { console.error(e)}
 }
 
 // -----------------------------------------------------------------------------
-
-
 
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
 export default (App = props => {
-
 
   return (
     <ContextProvider Theme={props.Theme}>
